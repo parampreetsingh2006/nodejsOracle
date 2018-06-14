@@ -1,6 +1,10 @@
 const express = require('express')
 const app = express()
-require('./db-setup');
+const bodyParser = require('body-parser');
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+require('./db-setup.js');
 var apiHandler = require('./api-handlers');
 app.post('/add-requirement', (req, res) => apiHandler.addRequirement(req, res));
 

@@ -2,7 +2,7 @@ var oracledb    = require('oracledb');
 var db          = require('./oracledb.js');
 
 var addRequirement = function(req,res) {
-	let reqId = req.getAttribute('id');
+	let reqData = req.body;
  let sql = "select * from requiremnts where requirementId = :reqId"
   db.doConnect(function(err, connection){
     console.log("INFO: Database - Retrieving CURRENT_DATE FROM DUAL");
@@ -57,7 +57,7 @@ var getRequirement = function(req,res) {
 
 
 var updateRequirement = function(req,res) {
-	let reqId = req.getAttribute('id');
+	let reqData = req.body;
  let sql = "select * from requiremnts where requirementId = :reqId"
   db.doConnect(function(err, connection){
     console.log("INFO: Database - Retrieving CURRENT_DATE FROM DUAL");
